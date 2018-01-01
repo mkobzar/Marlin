@@ -4,6 +4,72 @@ G28
 M211 S0
 ; Move the nozzle down so it is just gripping a piece of standard printer paper
 M114
-M851 Z-0.90
+M851 Z-1
 M500
 M211 S1
+
+
+
+
+G29
+G1 X92 Y55
+
+IRLZ44N IRF3708 IRLR8743
+
+
+start
+
+G21 ;metric values
+G90 ;absolute positioning
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+G28 X0 Y0 ;move X/Y to min endstops
+G28 Z0 ;move Z to min endstops
+G1 Z15.0 F9000 ;move the platform down 15mm
+G92 E0 ;zero the extruded length
+G1 F200 E3 ;extrude 3mm of feed stock
+G92 E0 ;zero the extruded length again
+G1 F9000
+;Put printing message on LCD screen
+M117 Printing...
+
+
+
+
+end
+
+M104 S0 ;extruder heater off
+M140 S0 ;heated bed heater off (if you have it)
+G91 ;relative positioning
+G1 E-1 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+G1 Z+0.5 E-5 X-20 Y-20 F9000 ;move Z up a bit and retract filament even more
+G28 X0 Y0 ;move X/Y to min endstops, so the head is out of the way
+M84 ;steppers off
+G90 ;absolute positioning
+
+
+
+new start:
+G21 ;metric values
+G90 ;absolute positioning
+M82 ;set extruder to absolute mode
+M107 ;start with the fan off
+G28 X0 Y0 ;move X/Y to min endstops
+G28 Z0 ;move Z to min endstops
+G1 Z15.0 F9000 ;move the platform down 15mm
+G92 E0 ;zero the extruded length
+G1 F200 E3 ;extrude 3mm of feed stock
+G92 E0 ;zero the extruded length again
+G1 F9000
+M117 Printing...
+
+
+mew end:
+M140 S0 ;heated bed heater off (if you have it)
+G91 ;relative positioning
+G1 Z+0.5 E-5 X-20 Y-20 F9000 ;move Z up a bit and retract filament even more
+G28 X0 Y0 ;move X/Y to min endstops, so the head is out of the way
+G1 E-30 F300  ;retract the filament a bit before lifting the nozzle, to release some of the pressure
+M104 S0 ;extruder heater off
+M84 ;steppers off
+G90 ;absolute positioning
