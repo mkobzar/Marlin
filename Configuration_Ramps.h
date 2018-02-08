@@ -2,28 +2,10 @@
 #define CONFIGURATION_H
 #define CONFIGURATION_H_VERSION 010107
 
-//===========================================================================
-//============================= Getting Started =============================
-//===========================================================================
-
-/**
- * Here are some standard links for getting your machine calibrated:
- *
- * http://reprap.org/wiki/Calibration
- * http://youtu.be/wAL9d7FgInk
- * http://calculator.josefprusa.cz
- * http://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide
- * http://www.thingiverse.com/thing:5573
- * https://sites.google.com/site/repraplogphase/calibration-of-your-reprap
- * http://www.thingiverse.com/thing:298812
- */
-
 
 #define SERIAL_PORT 0
 #define BAUDRATE 250000
-#ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EFB
-#endif
+#define MOTHERBOARD BOARD_RAMPS_14_EFB
 #define EXTRUDERS 1
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
  
@@ -449,7 +431,7 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 // X and Y axis travel speed (mm/m) between probes
-#define XY_PROBE_SPEED 8000
+#define XY_PROBE_SPEED 4000
 
 // Speed for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -491,7 +473,7 @@
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
-#define E_ENABLE_ON 0 // For all extruders
+#define E_ENABLE_ON 0 // For all extruders 
 
 // Disables axis stepper immediately when it's not being used.
 // WARNING: When motors turn off there is a chance of losing position accuracy!
@@ -551,6 +533,9 @@
 #define X_MAX_POS 220
 #define Y_MAX_POS 220
 #define Z_MAX_POS 230
+
+//#define HOTEND_OFFSET_X { 10 }
+//#define HOTEND_OFFSET_Y { 20 }
 
 /**
  * Software Endstops
@@ -800,8 +785,8 @@
 #endif
 
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_XY 1000   //(50*60)
-#define HOMING_FEEDRATE_Z  200    //(4*60)
+#define HOMING_FEEDRATE_XY (50*60)
+#define HOMING_FEEDRATE_Z  (4*60)
 
 // @section calibrate
 
@@ -906,7 +891,7 @@
 // @section temperature
 
 // Preheat Constants
-#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_HOTEND 220
 #define PREHEAT_1_TEMP_BED     70
 #define PREHEAT_1_FAN_SPEED     255 // Value from 0 to 255
 
@@ -1489,7 +1474,7 @@
   #define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip
   #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
-  //#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+  #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 #endif
 
 /**
