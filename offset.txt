@@ -16,8 +16,9 @@ M106 S255
 
 G29
 G1 X92 Y55
-
-M203 X6000 Y6000 Z300 E6000 ; set feed speed
+M203 Z150
+M203 X3000 Y3000 Z150 E3000 ; set feed speed
+M201 Z100
 
 M500 Store current settings in EEPROM for the next startup or M501.
 M501 Read all parameters from EEPROM. (Or, undo changes.)
