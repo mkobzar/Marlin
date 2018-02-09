@@ -6,6 +6,7 @@ M211 S0
 M114
 M851 Z-1.0 ;A8
 M851 Z-1.1 ;reprap
+; M206 X16 ; set 
 M500
 M211 S1
 
@@ -16,9 +17,20 @@ M106 S255
 G29
 G1 X92 Y55
 
+M203 X6000 Y6000 Z300 E6000 ; set feed speed
+
+M500 Store current settings in EEPROM for the next startup or M501.
+M501 Read all parameters from EEPROM. (Or, undo changes.)
+M502 Reset current settings to defaults, as set in Configurations.h. (Follow with M500 to reset the EEPROM too.)
+M503 Print the current settings – ''Not the settings stored in EEPROM.''
+
+
 IRLZ44N IRF3708 IRLR8743
 
 M106 ;fan on
+M106 S127 ; 50% speed
+M107 ;Fan Off
+G0 F2000 ; set speed
 start
 
 G21 ;metric values
