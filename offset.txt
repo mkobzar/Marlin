@@ -11,8 +11,10 @@ M500
 M211 S1
 
 
-#fun run:
-M106 S255
+
+M106 S255 ;fun run:
+M104 S230 ; set temp, no wait
+M109 S230 ; set temp, wait
 
 G29
 G1 X92 Y55
